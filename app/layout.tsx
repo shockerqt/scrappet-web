@@ -20,7 +20,7 @@ export default function RootLayout({
 
   return (
     <html lang="es" className={theme?.value || 'dark'}>
-      <body className={manrope.className}>
+      <body className={`${manrope.className} min-w-min`}>
         <Navbar />
         {children}
         <footer className="h-32"></footer>

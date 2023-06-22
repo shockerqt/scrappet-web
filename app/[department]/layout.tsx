@@ -2,7 +2,7 @@ import Image from 'next/image';
 import ProductsFilters from './products-filters';
 import ProductsPagination from './products-pagination';
 import ProductsSort from './products-sort';
-import { Bars3BottomRightIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import { FunnelIcon } from '@heroicons/react/24/outline';
 
 
 export default function ProductsLayout({
@@ -18,21 +18,14 @@ export default function ProductsLayout({
       </div>
       <header className="flex gap-2 lg:gap-8 items-center my-4 py-2 px-4 justify-between sticky top-16 md:top-24  backdrop-blur-md bg-neutral-100/90 dark:bg-black/90">
         {/* FILTERS MOBILE BUTTON */}
-        <div className="basis-60 grow lg:grow-0 text-xs">
-          <button className="flex items-center gap-1 justify-center lg:hidden border border-neutral-400 w-20 py-2 rounded-md"><FunnelIcon className="h-4" /> Filtrar</button>
+        <div className="basis-60 grow lg:grow-0 text-xs sm:text-sm">
+          <button className="flex items-center gap-1 justify-center lg:hidden border border-neutral-400 w-20 md:w-24 py-2 rounded-md"><FunnelIcon className="h-4" /> Filtrar</button>
         </div>
         {/* PAGINATION */}
         <nav className="">
           <ProductsPagination />
         </nav>
-        {/* ORDER MOBILE BUTTON */}
-        <div className="basis-60 grow justify flex justify-end lg:hidden text-xs">
-          <button className="flex items-center gap-1 justify-center lg:hidden border border-neutral-400 w-20 py-2 rounded-md"><Bars3BottomRightIcon className="h-4" /> Ordenar</button>
-        </div>
-        {/* ORDER */}
-        <nav className="justify-end basis-60 grow gap-4 hidden lg:flex">
-          <ProductsSort />
-        </nav>
+        <ProductsSort />
       </header>
       <div className="flex gap-8 px-4 h-full">
         {/* FILTERS */}

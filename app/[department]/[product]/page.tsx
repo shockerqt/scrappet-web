@@ -1,4 +1,4 @@
-export default async function Products() {
+export default async function Product() {
   const sleep = async () => {
     await new Promise(resolve => setTimeout(resolve, 3000));
   };

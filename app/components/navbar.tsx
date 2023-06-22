@@ -21,7 +21,9 @@ export default function Navbar() {
             { name: 'Perros', href: '/perros' },
           ]} />
           <form className="flex" action={switchTheme}>
-            <button>{theme?.value === 'dark' ? <SunIcon className="h-6" /> : <MoonIcon className="h-6" />}</button>
+            <button>
+              {theme?.value === 'light' ? <MoonIcon className="h-6" /> : <SunIcon className="h-6" />}
+            </button>
           </form>
         </div>
       </nav>

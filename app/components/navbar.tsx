@@ -1,17 +1,13 @@
 import Link from 'next/link';
 import { Bars3Icon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { cookies } from 'next/headers';
 
 import NavbarNavigation from './navbar-navigation';
 import { switchTheme } from '@/app/actions';
 
 
 export default function Navbar() {
-  const cookieStore = cookies();
-  const theme = cookieStore.get('theme');
-
   return (
-    <header className="w-full sticky top-0 mb-4 backdrop-blur-md bg-neutral-100/80 dark:bg-black/80">
+    <header className="w-full sticky top-0 mb-4 backdrop-blur-md bg-neutral-100/70 dark:bg-black/80">
       <nav className="max-w-screen-xl m-auto h-16 md:h-24 flex justify-between items-center px-4">
         <Link className="font-extrabold text-3xl" href="/gatos">scrappet.</Link>
         <button className="flex md:hidden"><Bars3Icon className="h-6" /></button>
@@ -22,7 +18,8 @@ export default function Navbar() {
           ]} />
           <form className="flex" action={switchTheme}>
             <button>
-              {theme?.value === 'light' ? <MoonIcon className="h-6" /> : <SunIcon className="h-6" />}
+              <MoonIcon className="h-6 dark:hidden" />
+              <SunIcon className="h-6 hidden dark:block" />
             </button>
           </form>
         </div>

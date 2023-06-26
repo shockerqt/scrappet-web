@@ -1,4 +1,4 @@
-export default async function Product() {
+export default async function ProductsGrid() {
   const sleep = async () => {
     await new Promise(resolve => setTimeout(resolve, 3000));
   };
@@ -14,6 +14,7 @@ export default async function Product() {
           <div>
 
             <h3 className="font-medium text-sm">Acana Bountiful Catch Gatos</h3>
+            <p className="text-neutral-500 text-sm">Kitten</p>
             <p className="text-lg font-extrabold">$35.990</p>
           </div>
         </div>

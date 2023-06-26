@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function ProductsHeader() {
+export default function ProductsPagination() {
   return (
     <>
       <div className="flex gap-2 font-medium">

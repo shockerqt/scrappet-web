@@ -1,4 +1,4 @@
-export default function ProductsMain() {
+export default function ProductsGridFallback() {
   const items = Array.from(Array(9).keys());
 
   return (

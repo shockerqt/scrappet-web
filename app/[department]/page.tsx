@@ -5,15 +5,15 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateStaticParams() {
-  // const posts = await fetch('https://.../posts').then((res) => res.json())
-  const departments = [
-    { department: 'gatos' },
-    { department: 'perros' },
-  ];
+// export async function generateStaticParams() {
+//   // const posts = await fetch('https://.../posts').then((res) => res.json())
+//   const departments = [
+//     { department: 'gatos' },
+//     { department: 'perros' },
+//   ];
 
-  return departments;
-}
+//   return departments;
+// }
 
 import { Bars3BottomRightIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
@@ -29,13 +29,13 @@ export default function Page({ params, searchParams }: PageProps) {
   // console.log(params, searchParams);
 
   return (
-    <div className="max-w-screen-xl m-auto grid gap-4">
+    <div className="flex-1 max-w-screen-xl m-auto grid gap-4">
       {/* THE IMAGE BLOCK */}
       <div className="grid grid-cols-1 grid-rows-1 px-4">
         <Image className="m-auto object-cover rounded-3xl h-20" src="/cats.jpg" alt="" width={1024} height={572} />
       </div>
 
-      <header className="flex px-4 gap-2 lg:gap-8 items-center mb-4 py-2 justify-between bg-neutral-100/80 dark:bg-black/90">
+      <header className="flex px-4 gap-2 lg:gap-8 items-center mb-4 py-2 justify-between">
         {/* FILTERS MOBILE BUTTON */}
         <div className="basis-60 grow lg:grow-0 text-xs sm:text-sm">
           <ProductsToggleButton

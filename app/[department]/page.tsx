@@ -35,7 +35,7 @@ export default function Page({ params, searchParams }: PageProps) {
         <Image className="m-auto object-cover rounded-3xl h-20" src="/cats.jpg" alt="" width={1024} height={572} />
       </div>
 
-      <header className="flex px-4 gap-2 lg:gap-8 items-center mb-4 py-2 justify-between sticky top-16 md:top-24 backdrop-blur-md bg-neutral-100/80 dark:bg-black/90">
+      <header className="flex px-4 gap-2 lg:gap-8 items-center mb-4 py-2 justify-between bg-neutral-100/80 dark:bg-black/90">
         {/* FILTERS MOBILE BUTTON */}
         <div className="basis-60 grow lg:grow-0 text-xs sm:text-sm">
           <ProductsToggleButton

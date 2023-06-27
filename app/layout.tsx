@@ -1,7 +1,6 @@
 import Navbar from '@/app/components/navbar';
 import './globals.css';
 import { Manrope } from 'next/font/google';
-import { cookies } from 'next/headers';
 
 const manrope = Manrope({ subsets: ['latin'] });
 
@@ -15,11 +14,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // const cookieStore = cookies();
-  // const theme = cookieStore.get('theme');
 
   return (
-    // <html lang="es" className={theme?.value || 'dark'} >
     <html lang="es">
       <body className={`${manrope.className} min-w-min text-black dark:text-white bg-neutral-100 dark:bg-black`}>
         <Navbar />

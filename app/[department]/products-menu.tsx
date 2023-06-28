@@ -1,7 +1,7 @@
 'use client';
 
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ReactElement, useContext, useRef } from 'react';
+import { ReactElement, useContext } from 'react';
 import { OpenedMenuContext, ToggleMenuContext } from './products-menu-context';
 
 interface ProductsFilterProps {
@@ -12,7 +12,6 @@ interface ProductsFilterProps {
 export default function ProductsFilters({ sortMenu, filtersMenu }: ProductsFilterProps) {
   const openedMenu = useContext(OpenedMenuContext);
   const toggleMenu = useContext(ToggleMenuContext);
-  const menuRef = useRef(null);
 
   const menu = {
     filters: {
@@ -29,7 +28,7 @@ export default function ProductsFilters({ sortMenu, filtersMenu }: ProductsFilte
 
   return (
     openedMenu !== 'none' &&
-    <div ref={menuRef} className={`${menu[openedMenu].specialClasses} rounded absolute sm:w-80 top-16 bg-neutral-100 dark:bg-black border container-border-color text-sm`}>
+    <div className={`${menu[openedMenu].specialClasses} rounded absolute sm:w-80 top-16 bg-neutral-100 dark:bg-black border container-border-color text-sm`}>
       <div className="pl-4 pr-2 py-1 flex items-center justify-between border-b container-border-color">
         <h1>{menu[openedMenu].title}</h1>
         <button

@@ -1,8 +1,8 @@
 import Navbar from '@/app/components/navbar';
-import './globals.css';
 import { Manrope } from 'next/font/google';
-import { PropsWithChildren } from 'react';
 import { cookies } from 'next/headers';
+import { PropsWithChildren } from 'react';
+import './globals.css';
 
 const manrope = Manrope({ subsets: ['latin'] });
 
@@ -17,7 +17,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang="es" className={theme?.value || 'dark'}>
-      <body className={`${manrope.className} min-h-screen min-w-min flex flex-col transition-colors text-black dark:text-white bg-neutral-100 dark:bg-black`}>
+      <body className={`${manrope.className} min-h-screen max-w-screen-xl min-w-min gap-4 m-auto flex flex-col transition-colors text-black dark:text-white bg-neutral-100 dark:bg-black`}>
         <Navbar />
         {children}
         <footer className="h-32"></footer>

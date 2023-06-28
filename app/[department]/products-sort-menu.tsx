@@ -1,24 +1,28 @@
 'use client';
 
 import Link from 'next/link';
-import { OpenedMenuContext } from './products-menu-context';
-import { useContext } from 'react';
 
 export default function ProductsSortMenu() {
-  const isOpened = useContext(OpenedMenuContext);
+  const sortOptions = {
+    'price-asc': 'Precio: menor a mayor',
+    'price-desc': 'Precio: mayor a menor',
+    'name-asc': 'Nombre: A-Z',
+    'name-desc': 'Nombre: Z-A',
+    'popularity-asc': 'Precio: menor a mayor',
+    'popularity-desc': 'Precio: menor a mayor',
+  };
 
   return (
     <>
-      <nav className={`${isOpened('sort') ? 'absolute' : 'hidden'} justify-end basis-60 grow gap-4`}>
-        <h2 className="text-lg font-semibold">Ordenar</h2>
-        <menu>
-          <li>
-            <Link href="#" className="px-3 py-0.5 flex bg-primary-200 dark:bg-primary-700 rounded-lg justify-between">
-            Alimentos
+      <menu className="flex flex-col gap-1 py-1">
+        {Object.entries(sortOptions).map(([key, label]) => (
+          <li key={key}>
+            <Link href="#" className="py-2 px-4 flex justify-between secondary-button">
+              {label}
             </Link>
           </li>
-        </menu>
-      </nav>
+        ))}
+      </menu>
     </>
   );
 }

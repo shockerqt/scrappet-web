@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { ProductsMenu, ToggleMenuContext } from './products-menu-context';
 
 interface Props {
@@ -11,9 +11,12 @@ interface Props {
 
 export default function ProductsToggleButton({ children, className, menu }: Props) {
   const toggle = useContext(ToggleMenuContext);
+  const menuRef = useRef(null);
 
   return (
-    <button onClick={() => toggle(menu)} className={className}>
+    <button ref={menuRef} onClick={(event) => {
+      toggle(menu);
+    }} className={className}>
       {children}
     </button>
 

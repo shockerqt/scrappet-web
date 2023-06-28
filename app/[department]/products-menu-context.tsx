@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react';
 
 export type ProductsMenu = 'none' | 'filters' | 'sort';
 
-export const OpenedMenuContext = createContext<(menu: ProductsMenu) => boolean>(() => false);
+export const OpenedMenuContext = createContext<ProductsMenu>('none');
 export const ToggleMenuContext = createContext<(menu: ProductsMenu) => void>(() => {});
 
 export default function ProductsMenuProvider({ children }: React.PropsWithChildren) {
@@ -15,10 +15,8 @@ export default function ProductsMenuProvider({ children }: React.PropsWithChildr
     else setOpenedMenu(menu);
   };
 
-  const isOpened = (menu: ProductsMenu) => openedMenu === menu;
-
   return (
-    <OpenedMenuContext.Provider value={isOpened}>
+    <OpenedMenuContext.Provider value={openedMenu}>
       <ToggleMenuContext.Provider value={toggle}>
         {children}
       </ToggleMenuContext.Provider>

@@ -7,8 +7,8 @@ import { switchTheme } from '@/app/actions';
 
 export default function Navbar() {
   return (
-    <header className="w-full sticky top-0 mb-4 backdrop-blur-md bg-neutral-100/70 dark:bg-black/80 transition-colors">
-      <nav className="max-w-screen-xl m-auto h-16 md:h-24 flex justify-between items-center px-4">
+    <header className="w-full sticky top-0 bg-neutral-100 dark:bg-black transition-colors">
+      <nav className="max-w-screen-xl m-auto h-16 flex justify-between items-center px-4">
         {/* LOGO */}
         <Link className="font-extrabold text-3xl" href="/gatos">scrappet.</Link>
         <div className="flex items-center gap-4">

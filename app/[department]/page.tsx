@@ -17,65 +17,85 @@ interface PageProps {
 
 import { Bars3BottomRightIcon, FunnelIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
-import React, { Suspense } from 'react';
-import ProductsFilters from './products-filters';
+import { Suspense } from 'react';
+import ProductsFiltersMenu from './products-filters-menu';
 import ProductsGrid from './products-grid';
+import ProductsGridFallback from './products-grid-fallback';
+import ProductsMenu from './products-menu';
 import ProductsPagination from './products-pagination';
 import ProductsSortMenu from './products-sort-menu';
-import ProductsGridFallback from './products-grid-fallback';
 import ProductsToggleButton from './products-toggle-button';
 
 export default function Page({ params, searchParams }: PageProps) {
   // console.log(params, searchParams);
 
   return (
-    <div className="flex-1 max-w-screen-xl m-auto grid gap-4">
+    <>
       {/* THE IMAGE BLOCK */}
-      <div className="grid grid-cols-1 grid-rows-1 px-4">
+      <div className="grid grid-cols-1 grid-rows-1 px-4 col-span-2">
         <Image className="m-auto object-cover rounded-3xl h-20" src="/cats.jpg" alt="" width={1024} height={572} />
       </div>
 
-      <header className="flex px-4 gap-2 lg:gap-8 items-center mb-4 py-2 justify-between">
+      {/* PAGINATION + SORT BUTTON + FILTER BUTTON */}
+      <header className="flex px-4 py-2 gap-2 lg:gap-8 lg:col-span-1 sticky backdrop-blur top-16 bg-neutral-100/70 dark:bg-black/80 items-center justify-between transition-colors">
         {/* FILTERS MOBILE BUTTON */}
-        <div className="basis-60 grow lg:grow-0 text-xs sm:text-sm">
+        <div className="basis-60 grow lg:grow-0 lg:pr-8 text-xs sm:text-sm">
           <ProductsToggleButton
             menu="filters"
-            className="flex items-center gap-1 justify-center lg:hidden border border-neutral-400 w-20 md:w-24 py-2 rounded-md"
+            className="flex lg:hidden items-center gap-1 justify-center border container-border-color w-20 sm:w-24 py-2 rounded secondary-button"
           >
-            <FunnelIcon className="h-4" /> Filtrar
+            <FunnelIcon height="1em" /> Filtrar
           </ProductsToggleButton>
         </div>
+
         {/* PAGINATION */}
-        <nav className="">
+        <nav className="text-sm sm:text-base">
           <Suspense fallback={<div>Loading</div>}>
             <ProductsPagination />
           </Suspense>
         </nav>
+
         {/* SORT MOBILE BUTTON */}
         <div className="basis-60 grow justify flex justify-end text-xs sm:text-sm">
-          <ProductsToggleButton menu="sort" className="flex items-center gap-1 justify-center border border-neutral-400 w-20 md:w-24 py-2 rounded-md">
-            <Bars3BottomRightIcon className="h-4" /> Ordenar
+          <ProductsToggleButton
+            menu="sort"
+            className="flex items-center gap-1 justify-center border container-border-color w-20 sm:w-24 py-2 rounded secondary-button"
+          >
+            <Bars3BottomRightIcon height="1em" /> Ordenar
           </ProductsToggleButton>
         </div>
-        {/* SORT MENU */}
+
+        {/* MENUS */}
         <Suspense>
-          <ProductsSortMenu />
+          <ProductsMenu
+            sortMenu={<ProductsSortMenu />}
+            filtersMenu={<ProductsFiltersMenu />}
+          />
         </Suspense>
+
+
       </header>
 
-      <div className="flex gap-8 h-full px-4">
+
+      {/* FILTERS AND PRODUCT GRID */}
+      <div className="flex p-4 gap-8 items-start overflow-x-clip">
+
         {/* FILTERS */}
-        <Suspense>
-          <ProductsFilters />
-        </Suspense>
+        <menu className="hidden lg:block top-0 bottom-0 basis-60 shrink-0">
+          <Suspense>
+            <ProductsFiltersMenu />
+          </Suspense>
+        </menu>
+
         {/* PRODUCT GRID */}
-        <main className="grow grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3">
+        <main className="grid flex-1 gap-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           <Suspense fallback={<ProductsGridFallback />}>
             <ProductsGrid />
           </Suspense>
         </main>
       </div>
-    </div>
+
+    </>
   );
 
 }

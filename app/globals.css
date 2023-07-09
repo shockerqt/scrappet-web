@@ -8,6 +8,6 @@
   }
 
   .secondary-button {
-    @apply bg-neutral-100 hover:bg-neutral-200 dark:bg-black dark:hover:bg-neutral-900 transition-colors;
+    @apply bg-neutral-100 transition-colors hover:bg-neutral-200 dark:bg-black dark:hover:bg-neutral-900;
   }
 }

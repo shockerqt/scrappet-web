@@ -1,8 +1,8 @@
+import { Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { Bars3Icon, MagnifyingGlassIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import NavbarNavigation from './navbar-navigation';
-import { switchTheme } from '@/app/actions';
+// import { switchTheme } from '@/app/actions';
 
 
 export default function Navbar() {
@@ -27,12 +27,12 @@ export default function Navbar() {
               { name: 'Gatos', href: '/gatos' },
               { name: 'Perros', href: '/perros' },
             ]} />
-            <form className="flex" action={switchTheme}>
+            {/* <form className="flex" action={switchTheme}>
               <button>
                 <MoonIcon className="h-6 dark:hidden" />
                 <SunIcon className="h-6 hidden dark:block" />
               </button>
-            </form>
+            </form> */}
           </div>
         </div>
       </nav>

@@ -9,7 +9,10 @@ interface ProductsFilterProps {
   filtersMenu: ReactElement;
 }
 
-export default function ProductsFilters({ sortMenu, filtersMenu }: ProductsFilterProps) {
+export default function ProductsFilters({
+  sortMenu,
+  filtersMenu,
+}: ProductsFilterProps) {
   const openedMenu = useContext(OpenedMenuContext);
   const toggleMenu = useContext(ToggleMenuContext);
 
@@ -27,20 +30,23 @@ export default function ProductsFilters({ sortMenu, filtersMenu }: ProductsFilte
   };
 
   return (
-    openedMenu !== 'none' &&
-    <div className={`${menu[openedMenu].specialClasses} rounded absolute sm:w-80 top-16 bg-neutral-100 dark:bg-black border container-border-color text-sm`}>
-      <div className="pl-4 pr-2 py-1 flex items-center justify-between border-b container-border-color">
-        <h1>{menu[openedMenu].title}</h1>
-        <button
-          className="secondary-button py-2 px-2 rounded"
-          onClick={() => toggleMenu(openedMenu)}
-        >
-          <XMarkIcon height="1.4em" />
-        </button>
+    openedMenu !== 'none' && (
+      <div
+        className={`${menu[openedMenu].specialClasses} container-border-color absolute top-16 rounded border bg-neutral-100 text-sm dark:bg-black sm:w-80`}
+      >
+        <div className='container-border-color flex items-center justify-between border-b py-1 pl-4 pr-2'>
+          <h1>{menu[openedMenu].title}</h1>
+          <button
+            className='secondary-button rounded px-2 py-2'
+            onClick={() => toggleMenu(openedMenu)}
+          >
+            <XMarkIcon height='1.4em' />
+          </button>
+        </div>
+        <nav className='max-h-96 overflow-y-scroll'>
+          {menu[openedMenu].element}
+        </nav>
       </div>
-      <nav className="max-h-96 overflow-y-scroll">
-        {menu[openedMenu].element}
-      </nav>
-    </div>
+    )
   );
 }

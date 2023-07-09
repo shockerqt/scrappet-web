@@ -14,10 +14,13 @@ export default function ProductsSortMenu() {
 
   return (
     <>
-      <menu className="flex flex-col gap-1 py-1">
+      <menu className='flex flex-col gap-1 py-1'>
         {Object.entries(sortOptions).map(([key, label]) => (
           <li key={key}>
-            <Link href="#" className="py-2 px-4 flex justify-between secondary-button">
+            <Link
+              href='#'
+              className='secondary-button flex justify-between px-4 py-2'
+            >
               {label}
             </Link>
           </li>
